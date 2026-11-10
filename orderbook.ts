@@ -87,6 +87,34 @@ class OrderBook {
 
         }
 
+        public cancelOrder(id: number): boolean {
+
+            for (let idx = 0; idx < this.asks.length; idx++) {
+                
+                if (this.asks[idx].id == id){
+
+                    this.asks.splice(idx, 1);
+                    return true;
+
+                }
+
+            }
+
+            for (let idx = 0; idx < this.bids.length; idx++) {
+
+                if (this.bids[idx].id == id) {
+
+                    this.bids.splice(idx, 1);
+                    return true;
+
+                }
+
+            }
+
+            return false;
+
+        }
+
 }
 
 const book = new OrderBook();
@@ -97,6 +125,15 @@ book.addOrder(order4);
 book.addOrder(order5);
 book.addOrder(order6);
 book.addOrder(order7);
+
+console.log(book.bids);
+console.log(book.asks);
+console.log(book.trades);
+
+book.cancelOrder(order4.id);
+book.cancelOrder(order2.id);
+book.cancelOrder(order5.id);
+book.cancelOrder(order3.id);
 
 console.log(book.bids);
 console.log(book.asks);
