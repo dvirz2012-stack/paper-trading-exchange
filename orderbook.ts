@@ -1,27 +1,6 @@
 import Trade from "./trade";
+import Order from "./order";
 
-class Order {
-
-    static nextId: number = 1;
-    id: number;
-    side: "buy" | "sell";
-    quantity: number;
-    price: number;
-    timestamp: number;
-
-    constructor(side: "buy" | "sell", price: number, quantity: number) {
-
-        this.id = Order.nextId;
-        Order.nextId++;
-
-        this.side = side;
-        this.quantity = quantity;
-        this.price = price;
-        this.timestamp = Date.now();
-
-    }
-    
-}
 
 const order1 = new Order("buy", 10000, 5);
 const order2 = new Order("buy", 10100, 3);
@@ -138,3 +117,5 @@ book.cancelOrder(order3.id);
 console.log(book.bids);
 console.log(book.asks);
 console.log(book.trades);
+
+export default OrderBook;
